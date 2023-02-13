@@ -4,9 +4,14 @@ export const SafeView = styled.SafeAreaView`
   flex: 1;
 `;
 export const Container = styled.View`
-  flex: 1;
   background-color: ${(props) => props.theme.COLORS.background};
-  padding: 0px 20px;
+  padding: 0px 32px;
+`;
+
+export const ContainerPlants = styled.View`
+  flex: 2;
+  padding: 0px 32px;
+  justify-content: center;
 `;
 
 export const Content = styled.View``;

@@ -9,10 +9,14 @@ interface ButtonProps extends TouchableOpacityProps {
   active?: boolean;
 }
 
-export default function EnvironmentButton({ title, ...rest }: ButtonProps) {
+export default function EnvironmentButton({
+  title,
+  active = false,
+  ...rest
+}: ButtonProps) {
   return (
-    <Button {...rest}>
-      <ButtonTitles>{title}</ButtonTitles>
+    <Button active={active} {...rest}>
+      <ButtonTitles active={active}>{title}</ButtonTitles>
     </Button>
   );
 }
