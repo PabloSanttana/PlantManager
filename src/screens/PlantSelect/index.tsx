@@ -10,10 +10,11 @@ import {
 } from "./styles";
 import Header from "@src/components/Header";
 import EnviromentButton from "@src/components/EnviromentButton";
-import PlantCardPrimary from "../../components/PlantCardPrimary";
+import PlantCardPrimary from "@src/components/PlantCardPrimary";
 import Load from "@src/components/Load";
 
-import api from "../../services/api";
+import api from "@src/services/api";
+import { getItem } from "@src/services/storage";
 
 interface PlantsEnvironmentsProps {
   key: string;
@@ -45,11 +46,18 @@ export default function PlantSelect() {
   const [page, setPage] = useState(1);
   const [loadingMore, setLoadingMore] = useState(false);
   const [loadedAll, setLoadedAll] = useState(false);
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
+    getUserName();
     getEnviroment();
     getPlants();
   }, []);
+
+  async function getUserName() {
+    const response = await getItem("user");
+    setUserName(response);
+  }
 
   async function getEnviroment() {
     const { data } = await api.get(
@@ -117,7 +125,7 @@ export default function PlantSelect() {
     <>
       <SafeView>
         <Container>
-          <Header />
+          <Header name={userName} />
           <Title>Em qual hambiente </Title>
           <SubTitle>você quer colocar sua planta?</SubTitle>
         </Container>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { Alert } from "react-native";
 
 import {
   Container,
@@ -13,6 +14,7 @@ import {
 } from "./styles";
 import Button from "@src/components/Button";
 import { Platform } from "react-native";
+import { setItem } from "@src/services/storage";
 
 export default function UserIndentification() {
   var isFilled = false;
@@ -21,6 +23,11 @@ export default function UserIndentification() {
   const [name, setName] = useState<string>("");
 
   function handleStart() {
+    if (name.length === 0) {
+      return Alert.alert("Me diz como chamar você?");
+    }
+    setItem("user", name);
+
     // @ts-ignore
     navigation.navigate("Confirmation");
   }

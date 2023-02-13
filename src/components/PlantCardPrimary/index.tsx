@@ -13,7 +13,7 @@ interface PlantProps extends TouchableOpacityProps {
 
 export default function PlantCardPrimary({ data, ...rest }: PlantProps) {
   return (
-    <Container {...rest}>
+    <Container activeOpacity={0.7} {...rest}>
       <SvgFromUri uri={data?.photo} width={70} height={70} />
       <Title>{data?.name}</Title>
     </Container>

@@ -9,14 +9,19 @@ interface ButtonProps extends TouchableOpacityProps {
   active?: boolean;
 }
 
-export default function EnvironmentButton({
-  title,
-  active = false,
-  ...rest
-}: ButtonProps) {
+function EnvironmentButton({ title, active = false, ...rest }: ButtonProps) {
   return (
     <Button active={active} {...rest}>
       <ButtonTitles active={active}>{title}</ButtonTitles>
     </Button>
   );
 }
+
+function arePropsEqual(prevProps: ButtonProps, nextProps: ButtonProps) {
+  if (prevProps.active === nextProps.active) {
+    return true;
+  }
+  return false;
+}
+
+export default React.memo(EnvironmentButton, arePropsEqual);
