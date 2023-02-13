@@ -29,7 +29,13 @@ export default function UserIndentification() {
     setItem("user", name);
 
     // @ts-ignore
-    navigation.navigate("Confirmation");
+    navigation.navigate("Confirmation", {
+      title: "Prontinho",
+      subtitle: `Agora vamos começar a cuidar das suas \n plantinhas com muito cuidado.`,
+      buttonTitle: "Começar",
+      nextScreen: "AuthRoutes",
+      icon: "smile",
+    });
   }
 
   function handleInputBlur() {

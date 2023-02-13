@@ -4,7 +4,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "@src/screens/Home";
 import UserIndentification from "@src/screens/UserIndentification";
 import Confirmation from "@src/screens/Confirmation";
-import PlantSelect from "../screens/PlantSelect";
+import PlantSave from "@src/screens/PlantSave";
+
+import AuthRoutes from "./tab.routes";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +24,8 @@ function AppRoutes() {
         component={UserIndentification}
       />
       <Stack.Screen name="Confirmation" component={Confirmation} />
-      <Stack.Screen name="PlantSelect" component={PlantSelect} />
+      <Stack.Screen name="PlantSave" component={PlantSave} />
+      <Stack.Screen name="AuthRoutes" component={AuthRoutes} />
     </Stack.Navigator>
   );
 }

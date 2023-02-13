@@ -17,7 +17,7 @@ export default function Home() {
     const response = await getItem("user");
     if (response !== null) {
       // @ts-ignore
-      navigation.navigate("PlantSelect");
+      navigation.navigate("AuthRoutes");
     }
   }
 

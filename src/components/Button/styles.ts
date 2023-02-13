@@ -11,6 +11,6 @@ export const Button = styled.TouchableOpacity`
 `;
 export const ButtonTitle = styled.Text`
   color: ${(props) => props.theme.COLORS.white};
-  font-size: 20px;
-  font-size: ${(props) => props.theme.FONTS.heading};
+  font-size: 23px;
+  font-family: ${(props) => props.theme.FONTS.text};
 `;

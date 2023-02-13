@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 import {
   Container,
@@ -12,28 +12,40 @@ import {
 } from "./styles";
 import Button from "@src/components/Button";
 
+interface Params {
+  title: string;
+  subtitle: string;
+  buttonTitle: string;
+  nextScreen: string;
+  icon: "smile" | "hug";
+}
+
+const emojis = {
+  hug: "🤗",
+  smile: "😁",
+};
+
 export default function Confirmation() {
   const navigation = useNavigation();
+  const routes = useRoute();
+  const data = routes.params as Params;
 
   function handleMoveOn() {
     // @ts-ignore
-    navigation.navigate("PlantSelect");
+    navigation.navigate(data.nextScreen);
   }
 
   return (
     <Container>
       <Content>
         <Header>
-          <Emoji>😁</Emoji>
+          <Emoji>{emojis[data.icon]}</Emoji>
           <>
-            <Title>Prontinho</Title>
-            <SubTitle>
-              Agora vamos começar a cuidar das suas {"\n"} plantinhas com muito
-              cuidado.
-            </SubTitle>
+            <Title>{data.title}</Title>
+            <SubTitle>{data.subtitle}</SubTitle>
           </>
           <Footer>
-            <Button title="Começar" onPress={handleMoveOn} />
+            <Button title={data.buttonTitle} onPress={handleMoveOn} />
           </Footer>
         </Header>
       </Content>

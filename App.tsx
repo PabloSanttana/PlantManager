@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
+import "react-native-gesture-handler";
 
 import {
   useFonts,
