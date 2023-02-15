@@ -38,8 +38,11 @@ export default function PlantSelect() {
 
   useEffect(() => {
     getEnviroment();
-    getPlants();
   }, []);
+
+  useEffect(() => {
+    getPlants();
+  }, [page]);
 
   async function getEnviroment() {
     const { data } = await api.get(
@@ -81,15 +84,14 @@ export default function PlantSelect() {
   }
 
   function handleGetMore(distance: number) {
-    if (loadedAll || loadingMore) {
+    if (distance < 1) {
       return;
     }
-    if (distance < 1) {
+    if (loadedAll || loadingMore) {
       return;
     }
     setLoadingMore(true);
     setPage((oldValue) => oldValue + 1);
-    getPlants();
   }
 
   function handlePlantSelected(plant: PlantProps) {

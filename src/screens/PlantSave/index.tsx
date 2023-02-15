@@ -19,16 +19,20 @@ import {
   ContainerInfo,
   ButtonDatepicker,
   ButtonDatepickerText,
+  Goback,
 } from "./styles";
 import waterdropImage from "@src/assets/waterdrop.png";
 import Button from "../../components/Button";
 import { PlantProps, savePlant } from "@src/services/storage";
+import { Ionicons } from "@expo/vector-icons";
+import { useTheme } from "styled-components";
 
 interface Params {
   plant: PlantProps;
 }
 
 export default function PlantSave() {
+  const theme = useTheme();
   const navigation = useNavigation();
   const [selectedDateTime, setSelectedDateTime] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(Platform.OS == "ios");
@@ -78,6 +82,14 @@ export default function PlantSave() {
   return (
     <Container>
       <ContainerInfo>
+        <Goback onPress={() => navigation.goBack()}>
+          <Ionicons
+            name="chevron-back"
+            size={30}
+            style={{ color: theme.COLORS.heading }}
+          />
+        </Goback>
+
         <SvgFromUri uri={plant.photo} height={150} width={150} />
         <PlantName>{plant.name}</PlantName>
         <PlantAbout>{plant.about}</PlantAbout>

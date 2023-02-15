@@ -1,5 +1,8 @@
 import styled from "styled-components/native";
-import { getBottomSpace } from "react-native-iphone-x-helper";
+import {
+  getBottomSpace,
+  getStatusBarHeight,
+} from "react-native-iphone-x-helper";
 
 export const Container = styled.View`
   flex: 1;
@@ -11,8 +14,14 @@ export const ContainerInfo = styled.View`
   background-color: ${(props) => props.theme.COLORS.shape};
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 
+export const Goback = styled.TouchableOpacity`
+  position: absolute;
+  left: 32px;
+  top: ${(getStatusBarHeight() || 20) + 40 + "px"};
+`;
 export const PlantName = styled.Text`
   margin-top: 32px;
   margin-bottom: 16px;
